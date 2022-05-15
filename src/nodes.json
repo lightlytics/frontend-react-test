@@ -1,0 +1,74 @@
+[
+    {
+        "id": "AWS",
+        "parent": null,
+        "rel": []
+    },
+    {
+        "id": "Internet",
+        "parent": null,
+        "rel": [
+            "eni-1"
+        ]
+    },
+    {
+        "id": "account-1",
+        "parent": "AWS",
+        "rel": []
+    },
+    {
+        "id": "us-east-1",
+        "parent": "account-1",
+        "rel": []
+    },
+    {
+        "id": "vpc-1",
+        "parent": "us-east-1",
+        "rel": []
+    },
+    {
+        "id": "us-east-1a",
+        "parent": "vpc-1",
+        "rel": []
+    },
+    {
+        "id": "alb-1",
+        "parent": "vpc-1",
+        "rel": []
+    },
+    {
+        "id": "subnet-1",
+        "parent": "us-east-1a",
+        "rel": []
+    },
+    {
+        "id": "instance-1",
+        "parent": "subnet-1",
+        "rel": []
+    },
+    {
+        "id": "eni-1",
+        "parent": "instance-1",
+        "rel": [
+            "eni-2"
+        ]
+    },
+    {
+        "id": "subnet-2",
+        "parent": "us-east-1a",
+        "rel": []
+    },
+    {
+        "id": "instance-2",
+        "parent": "subnet-2",
+        "rel": []
+    },
+    {
+        "id": "eni-2",
+        "parent": "instance-2",
+        "rel": [
+            "eni-1",
+            "alb-1"
+        ]
+    }
+]
