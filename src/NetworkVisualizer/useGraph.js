@@ -1,7 +1,7 @@
 import dagre from "dagre";
 import { useMemo } from "react";
 
-export function useGraph({ nodes }) {
+function useGraph({ nodes }) {
   return useMemo(() => {
     const g = new dagre.graphlib.Graph({
       compound: true,
@@ -39,3 +39,5 @@ export function useGraph({ nodes }) {
     return g;
   }, [nodes]);
 }
+
+export default useGraph;
