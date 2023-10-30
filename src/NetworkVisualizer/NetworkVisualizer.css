@@ -6,8 +6,20 @@
   border: solid 1px black;
 }
 
+.node .toolbar {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px black;
+}
+
 .node .label {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.node button {
+  border: 0;
 }

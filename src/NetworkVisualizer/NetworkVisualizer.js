@@ -1,22 +1,25 @@
 import { useContext } from "react";
-import { context } from "./GraphProvider";
+import GraphProvider, { context } from "./GraphProvider";
 import Node from "./Node";
 import Edges from "./Edges";
 
 import "./NetworkVisualizer.css";
 
-function NetworkVisualizer() {
-  const { width, height, edges, nodesByParent } = useContext(context);
-  const rootNodes = nodesByParent[null]
-
+function NetworkVisualizer({ nodes }) {
   return (
-    <div className="container">
-      {rootNodes?.map((node) => (
-        <Node key={node.id} node={node} />
-      ))}
-      <Edges edges={edges} width={width} height={height} />
-    </div>
+    <GraphProvider nodes={nodes}>
+      <div className="container">
+        <RootNodes />
+        <Edges />
+      </div>
+    </GraphProvider>
   );
+}
+
+function RootNodes() {
+  const { nodesByParent } = useContext(context);
+
+  return nodesByParent[null]?.map((node) => <Node key={node.id} node={node} />);
 }
 
 export default NetworkVisualizer;

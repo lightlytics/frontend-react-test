@@ -1,17 +1,23 @@
+import React, { memo, useContext } from "react";
 import { Arrow, Layer, Stage } from "react-konva";
+import { context } from "./GraphProvider";
 
-function Edges({ width, height, edges }) {
+const Edge = memo(({ points }) => (
+  <Arrow
+    points={points.map((point) => [point.x, point.y]).flat()}
+    strokeWidth={1}
+    stroke={"black"}
+    fill={"black"}
+  />
+));
+
+function Edges() {
+  const { width, height, edges } = useContext(context);
   return (
-    <Stage width={width} height={height}>
+    <Stage width={width} height={height} style={{ pointerEvents: "none" }}>
       <Layer>
         {edges.map((edge, i) => (
-          <Arrow
-            key={i}
-            points={edge.points}
-            strokeWidth={1}
-            stroke={"black"}
-            fill={"black"}
-          />
+          <Edge key={i} points={edge.points} />
         ))}
       </Layer>
     </Stage>
